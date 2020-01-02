@@ -1,0 +1,9 @@
+﻿{
+  "TeleportOnCooldown": "I won't be able to teleport home for {{timeLeft}} minute(s)...",
+  "NotEnoughStamina": "Not enough stamina to teleport home...",
+  "CountDownMessage": "Going home in {{timeLeft}}s!",
+  "TeleportQuestion": "Teleport home?",
+  "TeleportingNow": "Going home now!",
+  "Yes": "Yes",
+  "No": "No"
+}

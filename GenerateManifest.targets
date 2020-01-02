@@ -1,0 +1,28 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(SolutionDir)AssemblyVersion.targets" Condition="Exists('$(SolutionDir)AssemblyVersion.targets')" />
+	<ImportGroup Label="PropertySheets" />
+	<Target Name="GenerateManifest" BeforeTargets="BeforeBuild">
+		<Message Text="Generating the manifest for $(TargetName)..." Importance="High"></Message>
+		<PropertyGroup>
+			<ManifestFile>
+{
+  "Name": "$(AssemblyTitle)",
+  "Author": "$(AssemblyCompany)",
+  "Version": {
+    "MajorVersion": $(AssemblyVersionMajor),
+    "MinorVersion": $(AssemblyVersionMinor),
+    "PatchVersion": $(AssemblyVersionBuild),
+    "Build": "$(AssemblyVersionRevision)"
+  },
+  "UniqueID": "$(AssemblyCompany).$(TargetName)",
+  "Description": "$(AssemblyDescription)",
+  "PerSaveConfigs": false,
+  "EntryDll": "$(TargetFileName)"
+}
+			</ManifestFile>
+		</PropertyGroup>
+
+		<WriteLinesToFile File="$(ProjectDir)manifest.json" Lines="$(ManifestFile)" Overwrite="true" />
+		<Error Condition="!Exists('$(ProjectDir)manifest.json')" Text="Failed to generate the manifest for $(TargetName): $(ProjectDir)manifest.json." />
+	</Target>
+</Project>

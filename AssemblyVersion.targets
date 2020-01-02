@@ -1,0 +1,29 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ImportGroup Label="AssemblyVersion" />
+  	<PropertyGroup Label="AssemblyInfo">
+		<In>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs'))</In>
+		<!-- ex:                 [assembly: AssemblyDescription("")] -->
+		<DescriptionPattern>^\s*\[assembly: AssemblyDescription\("(?'Desc'.*)"\)\]</DescriptionPattern>
+		<!-- ex:             [assembly: AssemblyDescription("")] -->
+		<CompanyPattern>^\s*\[assembly: AssemblyCompany\("(?'Company'.*)"\)\]</CompanyPattern>
+		<!-- ex:           [assembly: AssemblyTitle("")] -->
+		<TitlePattern>^\s*\[assembly: AssemblyTitle\("(?'Title'.*)"\)\]</TitlePattern>
+		<!-- ex:		  [assembly: Guid("0a113b3f-75f2-4da2-97a1-5c42b03f9f61")] -->
+		<!--              [assembly: Guid ("         0a113b3f     - 75f2         - 4da2         - 97a1         - 5c42b03f9f61")] -->
+		<GuidPattern>^\s*\[assembly: Guid\("(?'Guid'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"\)\]</GuidPattern>
+		<!-- ex:             [assembly: AssemblyVersion("1.0.0.0")] -->
+		<!--                 [assembly: AssemblyVersion ("  1   .  0   .  0  .  0  " ) ] -->
+		<VersionPattern>^\s*\[assembly: AssemblyVersion\("(?'Major'[\d]+)\.(?'Minor'[\d]+)\.(?'Build'[\d]+).(?'Revision'[^"]+)"\)\]</VersionPattern>
+
+		<AssemblyVersionMajor>$([System.Text.RegularExpressions.Regex]::Match($(In),    $(VersionPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Major"].Value)</AssemblyVersionMajor>
+		<AssemblyVersionMinor>$([System.Text.RegularExpressions.Regex]::Match($(In),    $(VersionPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Minor"].Value)</AssemblyVersionMinor>
+		<AssemblyVersionBuild>$([System.Text.RegularExpressions.Regex]::Match($(In),    $(VersionPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Build"].Value)</AssemblyVersionBuild>
+		<AssemblyVersionRevision>$([System.Text.RegularExpressions.Regex]::Match($(In), $(VersionPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Revision"].Value)</AssemblyVersionRevision>
+		<AssemblyFullVersion>$(AssemblyVersionMajor).$(AssemblyVersionMinor).$(AssemblyVersionBuild).$(AssemblyVersionRevision)</AssemblyFullVersion>
+		
+		<AssemblyGuid>$([System.Text.RegularExpressions.Regex]::Match($(In),        $(GuidPattern),        System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Guid"].Value)</AssemblyGuid>
+		<AssemblyTitle>$([System.Text.RegularExpressions.Regex]::Match($(In),       $(TitlePattern),       System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Title"].Value)</AssemblyTitle>
+		<AssemblyCompany>$([System.Text.RegularExpressions.Regex]::Match($(In),     $(CompanyPattern),     System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Company"].Value)</AssemblyCompany>
+		<AssemblyDescription>$([System.Text.RegularExpressions.Regex]::Match($(In), $(DescriptionPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Desc"].Value)</AssemblyDescription>
+	</PropertyGroup>
+</Project>

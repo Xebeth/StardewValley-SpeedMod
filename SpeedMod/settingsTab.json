@@ -1,0 +1,69 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/GilarF/SVM/develop/ModSettingsTab/schema.json",
+  "Description": {
+    "en": "Adds a permanent (configurable) speed boost and the ability to teleport home at the cost of stamina.",
+    "fr": "Ajoute un bonus permanent (configurable) et la possibilité de se téléporter à la maison en dépensant de l'endurance."
+  },
+  "Config": [
+    {
+      "Name": "SpeedModifier",
+      "Description": {
+        "en": "Value of the speed boost.",
+        "fr": "Valeur du bonus de vitesse."
+      },
+      "Type": "Slider",
+      "Label": "Speed boost",
+      "SliderMaxValue": 25,
+      "SliderMinValue": 0,
+      "SliderStep": 1
+    },
+    {
+      "Name": "StaminaCost",
+      "Description": {
+        "en": "The amount of energy used to teleport.",
+        "fr": "La quantité d'énergie utiliser pour se téléporter."
+      },
+      "Type": "Slider",
+      "Label": "Energy cost",
+      "SliderMaxValue": 500,
+      "SliderMinValue": 0,
+      "SliderStep": 1
+    },
+    {
+      "Name": "TeleportHomeKey",
+      "Description": {
+        "en": "The key used to trigger the teleportation (displays a confirmation dialog).",
+        "de": "La touche utilisée pour déclencher la téléportation (affiche un dialog de confirmation)."
+      },
+      "Type": "InputListener",
+      "Label": "Teleport key"
+    },
+    {
+      "Name": "RecastCooldown",
+      "Description": {
+        "en": "The time period for which the teleportation is on cooldown (resets at the end of the day). Format: HH:MM:SS",
+        "fr": "La période de temps pendant laquelle la téléportation est indisponible (remise à zéro à la fin de la journée). Format: HH:MM:SS"
+      },
+      "Type": "TextBox",
+      "Label": "Energy cost"
+    },
+    {
+      "Name": "CastCooldown",
+      "Description": {
+        "en": "The time it takes to perform the teleportation. This cannot be interrupted and you won't be able to move for the duration! Format: HH:MM:SS",
+        "fr": "Le temps que la téléportation prend pour être exécutée. Celle-ci ne peut pas être interrompue et vous ne pourrez pas bouger pendant ce temps! Format: HH:MM:SS"
+      },
+      "Type": "TextBox",
+      "Label": "Casting time"
+    },
+    {
+      "Name": "EnabledInMultiplayer",
+      "Description": {
+        "en": "Enabled the home teleportation in multiplayer mode.",
+        "fr": "Active la téléportation en mode multijoueurs."
+      },
+      "Type": "CheckBox",
+      "Label": "Enabled in multiplayer"
+    }
+  ]
+}
