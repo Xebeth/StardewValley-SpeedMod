@@ -4,25 +4,59 @@ using StardewModdingAPI;
 using System.Timers;
 using StardewValley;
 using System;
+using ModSettingsTabApi.Events;
+using ModSettingsTabApi.Framework.Interfaces;
 
 namespace SpeedMod
 {
-    public class SpeedMod : Mod
+    public class SpeedMod : Mod, ISettingsTabApi
     {
         private Timer _coolDownTimer;
         private double _countDown;
         private bool _cooldown;
 
+        public event EventHandler<OptionsChangedEventArgs> OptionsChanged;
+
         public static ModConfig Config { get; private set; }
 
         public override void Entry(IModHelper modHelper)
         {
+            const string ModSettingsTabUniqueID = "GilarF.ModSettingsTab";
+
             Config = Helper.ReadConfig<ModConfig>();
 
             modHelper.Events.GameLoop.SaveLoaded += SpeedMod_GameLoaded;
             modHelper.Events.GameLoop.UpdateTicked += SpeedMod_Speedup;
             modHelper.Events.GameLoop.DayEnding += GameLoop_DayEnding;
             modHelper.Events.Input.ButtonPressed += SpeedMod_KeyUp;
+
+            if (Config != null)
+            {
+                Monitor.Log(Config.ToString(), LogLevel.Info);
+
+                modHelper.Events.GameLoop.GameLaunched += (sender, args) => {
+                    var modSettingsTabApi = modHelper.ModRegistry.GetApi<IModTabSettingsApi>(ModSettingsTabUniqueID);
+
+                    if (modSettingsTabApi != null)
+                    {
+                        Monitor.Log("ModSettingsTab is present", LogLevel.Info);
+
+                        var modTab = modSettingsTabApi.GetMod(Helper.ModRegistry.ModID);
+
+                        if (modTab != null)
+                        {
+                            Monitor.Log("ModSettingsTab integration success", LogLevel.Info);
+
+                            modTab.OptionsChanged += ModTabSettingsOptionsChanged;
+                        }
+                    }
+                };
+            }
+        }
+
+        private void ModTabSettingsOptionsChanged(object sender, OptionsChangedEventArgs e)
+        {
+            Config = Helper.ReadConfig<ModConfig>();
 
             if (Config != null)
             {

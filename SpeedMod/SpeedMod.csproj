@@ -55,6 +55,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="ModSettingsTabApi">
+      <HintPath>..\Packages\ModTabSettings\ModSettingsTabApi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -64,7 +67,6 @@
   <Import Project="..\Packages\Pathoschild.Stardew.ModBuildConfig.3.0.0\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="Exists('..\Packages\Pathoschild.Stardew.ModBuildConfig.3.0.0\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
   <Import Project="$(SolutionDir)GenerateManifest.targets" Condition="Exists('$(SolutionDir)GenerateManifest.targets')" />
   <Import Project="$(ProjectDir)Properties\Release.props" Condition="Exists('$(ProjectDir)Properties\Release.props')" />
-
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
