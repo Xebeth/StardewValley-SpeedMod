@@ -12,7 +12,10 @@
         "fr": "Valeur du bonus de vitesse."
       },
       "Type": "Slider",
-      "Label": "Speed boost",
+      "Label": {
+        "en": "Speed boost",
+        "fr": "Bonus de vitesse"
+      },
       "SliderMaxValue": 25,
       "SliderMinValue": 0,
       "SliderStep": 1
@@ -24,7 +27,10 @@
         "fr": "La quantité d'énergie utiliser pour se téléporter."
       },
       "Type": "Slider",
-      "Label": "Energy cost",
+      "Label": {
+        "en": "Energy cost",
+        "fr": "Coût en énergie"
+      },
       "SliderMaxValue": 500,
       "SliderMinValue": 0,
       "SliderStep": 1
@@ -36,7 +42,10 @@
         "de": "La touche utilisée pour déclencher la téléportation (affiche un dialog de confirmation)."
       },
       "Type": "InputListener",
-      "Label": "Teleport key"
+      "Label": {
+        "en": "Teleport key",
+        "fr": "Touche de téléportation"
+      }
     },
     {
       "Name": "RecastCooldown",
@@ -45,7 +54,10 @@
         "fr": "La période de temps pendant laquelle la téléportation est indisponible (remise à zéro à la fin de la journée). Format: HH:MM:SS"
       },
       "Type": "TextBox",
-      "Label": "Energy cost"
+      "Label": {
+        "en": "Recast cooldown",
+        "fr": "Période d'indisponibilité"
+      }
     },
     {
       "Name": "CastCooldown",
@@ -54,7 +66,10 @@
         "fr": "Le temps que la téléportation prend pour être exécutée. Celle-ci ne peut pas être interrompue et vous ne pourrez pas bouger pendant ce temps! Format: HH:MM:SS"
       },
       "Type": "TextBox",
-      "Label": "Casting time"
+      "Label": {
+        "en": "Casting time",
+        "fr": "Temps d'exécution"
+      }
     },
     {
       "Name": "EnabledInMultiplayer",
@@ -63,7 +78,10 @@
         "fr": "Active la téléportation en mode multijoueurs."
       },
       "Type": "CheckBox",
-      "Label": "Enabled in multiplayer"
+      "Label": {
+        "en": "Enabled in multiplayer",
+        "fr": "Actif en mode multijoueurs"
+      }
     }
   ]
 }
