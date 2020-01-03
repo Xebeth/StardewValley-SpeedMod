@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://raw.githubusercontent.com/GilarF/SVM/develop/ModSettingsTab/schema.json",
+  "$schema": "https://raw.githubusercontent.com/Xebeth/SVM/feature/label-localization/ModSettingsTab/schema.json",
   "Description": {
     "en": "Adds a permanent (configurable) speed boost and the ability to teleport home at the cost of stamina.",
     "fr": "Ajoute un bonus permanent (configurable) et la possibilité de se téléporter à la maison en dépensant de l'endurance."
