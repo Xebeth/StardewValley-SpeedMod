@@ -61,6 +61,7 @@ namespace SpeedMod
             if (Config != null)
             {
                 Monitor.Log(Config.ToString(), LogLevel.Info);
+                e.Reloaded = true;
             }
         }
 
