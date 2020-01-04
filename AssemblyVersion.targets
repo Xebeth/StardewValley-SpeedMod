@@ -41,4 +41,37 @@
 		<AssemblyDescription>$([System.Text.RegularExpressions.Regex]::Match($(In),   $(DescriptionPattern),   System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Desc"].Value)</AssemblyDescription>
 		<AssemblyConfiguration>$([System.Text.RegularExpressions.Regex]::Match($(In), $(ConfigurationPattern), System.Text.RegularExpressions.RegexOptions.Multiline).Groups["Config"].Value)</AssemblyConfiguration>
 	</PropertyGroup>
+	<UsingTask TaskName="GetAssemblyVersion" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+		<ParameterGroup>
+			<MajorOnly ParameterType="System.Boolean" Required="false">false</MajorOnly>
+			<AssemblyPath ParameterType="System.String" Required="true" />			
+			<ProductVersion ParameterType="System.String" Output="true" />
+			<FileVersion ParameterType="System.String" Output="true" />
+		</ParameterGroup>
+		<Task>
+			<Using Namespace="System.Diagnostics" />
+			<Code Type="Fragment" Language="cs">
+			  <![CDATA[
+					int productMinorPart, productBuildPart, fileMinorPart, fileBuildPart;
+					var versionInfo = FileVersionInfo.GetVersionInfo(this.AssemblyPath);
+
+					if (this.MajorOnly)
+					{
+						productMinorPart = productBuildPart = 0;
+						fileMinorPart = fileBuildPart = 0;						
+					}
+					else
+					{
+						productMinorPart = versionInfo.ProductMinorPart;
+						productBuildPart = versionInfo.ProductBuildPart;
+						fileMinorPart = versionInfo.FileMinorPart;
+						fileBuildPart = versionInfo.FileBuildPart;
+					}
+					
+					this.ProductVersion = string.Format("{0}.{1}.{2}", versionInfo.ProductMajorPart, productMinorPart, productBuildPart);
+					this.FileVersion = string.Format("{0}.{1}.{2}", versionInfo.FileMajorPart, fileMinorPart, fileBuildPart);
+				]]>
+			</Code>
+		</Task>
+	</UsingTask>
 </Project>
