@@ -27,7 +27,12 @@ namespace SpeedMod
             TeleportHomeKey = SButton.H;
         }
 
-        private string GetOptionState(bool option)
+        public static int Cooldown(TimeSpan cooldown, double minValue)
+        {
+            return (int)Math.Max(cooldown.TotalMilliseconds, minValue);
+        }
+
+        private static string GetOptionState(bool option)
         {
             return option ? "X" : " ";
         }
