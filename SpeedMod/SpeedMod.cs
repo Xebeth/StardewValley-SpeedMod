@@ -14,9 +14,9 @@ namespace SpeedMod
         private Timer _coolDownTimer;
         private double _countDown;
         private bool _cooldown;
-
+#pragma warning disable CS0067
         public event EventHandler<OptionsChangedEventArgs> OptionsChanged;
-
+#pragma warning restore CS0067
         public static ModConfig Config { get; private set; }
 
         public override void Entry(IModHelper modHelper)

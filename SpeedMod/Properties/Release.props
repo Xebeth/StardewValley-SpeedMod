@@ -6,6 +6,13 @@
     <!-- Enable the ZIP release only for the Release configuration -->
     <EnableModZip Condition="$(Configuration) == 'Debug'">false</EnableModZip>
     <!-- Override the output folder for the releases -->
-    <ModZipPath>$(SolutionDir)Releases</ModZipPath>    
+    <ModZipPath>$(SolutionDir)Releases</ModZipPath>
   </PropertyGroup>
+  <!-- Set or override entries in the mod manifest (Mod<ManifestKey>) -->
+  <Target Name="ConfigureManifest" BeforeTargets="GenerateManifest">
+    <PropertyGroup>
+      <!-- Update keys for the mod manifest -->
+      <ModUpdateKeys>"Nexus:5082"</ModUpdateKeys>
+    </PropertyGroup>
+  </Target>
 </Project>
