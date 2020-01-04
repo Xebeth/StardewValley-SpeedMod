@@ -3,7 +3,5 @@
   "NotEnoughStamina": "Je n'ai pas assez d'endurance pour me téléporter...",
   "CountDownMessage": "Téléportation dans {{timeLeft}}s!",
   "TeleportQuestion": "Retour au bercail?",
-  "TeleportingNow": "C'est parti!",
-  "Yes": "Oui",
-  "No": "Non"
+  "TeleportingNow": "C'est parti!"
 }

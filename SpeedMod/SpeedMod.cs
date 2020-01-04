@@ -113,14 +113,12 @@ namespace SpeedMod
             }
             else if (Game1.dialogueUp == false)
             {
+                var location = Game1.player.currentLocation;
+                var responses = location.createYesNoResponses();
                 var teleportQuestion = Helper.Translation.Get("TeleportQuestion");
-                var yes = Helper.Translation.Get("Yes");
-                var no = Helper.Translation.Get("No");
 
-                var responses = new[] { new Response(@"Y", yes), new Response(@"N", no) };
-
-                Game1.player.currentLocation.createQuestionDialogue(teleportQuestion, responses, AnswerTeleportHome);
-                Game1.player.currentLocation.lastQuestionKey = "Teleport";
+                location.createQuestionDialogue(teleportQuestion, responses, AnswerTeleportHome);
+                location.lastQuestionKey = "Teleport";
             }
         }
 
@@ -128,7 +126,7 @@ namespace SpeedMod
         {
             switch (whichAnswer)
             {
-                case "Y":
+                case "Yes":
                     StartTeleport();
                 break;
             }

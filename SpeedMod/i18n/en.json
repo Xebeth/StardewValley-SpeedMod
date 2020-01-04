@@ -3,7 +3,5 @@
   "NotEnoughStamina": "Not enough stamina to teleport home...",
   "CountDownMessage": "Going home in {{timeLeft}}s!",
   "TeleportQuestion": "Teleport home?",
-  "TeleportingNow": "Going home now!",
-  "Yes": "Yes",
-  "No": "No"
+  "TeleportingNow": "Going home now!"
 }
