@@ -35,6 +35,7 @@
     <Compile Include="SpeedMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpellEffects.cs" />
+    <Compile Include="TeleportSuccessArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="i18n\default.json">
