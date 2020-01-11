@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Speed Mod for Stardew Valley")]
-[assembly: AssemblyDescription("Adds a permanent (configurable) speed boost and the ability to teleport home at the cost of stamina")]
+[assembly: AssemblyDescription("Adds a permanent (configurable) speed boost and the ability to teleport home at the cost of energy")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Blackclaw")]
 [assembly: AssemblyProduct("Speed Mod")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
+[assembly: AssemblyFileVersion("1.2.0.0")]
